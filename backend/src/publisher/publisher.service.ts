@@ -9,7 +9,7 @@ export class PublisherService {
   }
 
   findAll() {
-    return `This action returns all publisher`;
+    return [];
   }
 
   findOne(id: number) {

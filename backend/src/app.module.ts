@@ -9,7 +9,14 @@ import { ReaderModule } from './reader/reader.module';
 import { StaffModule } from './staff/staff.module';
 
 @Module({
-  imports: [BookModule, PublisherModule, CategoryModule, AddressModule, ReaderModule, StaffModule],
+  imports: [
+    BookModule,
+    PublisherModule,
+    CategoryModule,
+    AddressModule,
+    ReaderModule,
+    StaffModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

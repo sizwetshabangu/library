@@ -2,10 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PublisherService } from './publisher.service';
 import { CreatePublisherDto } from './dto/create-publisher.dto';
 import { UpdatePublisherDto } from './dto/update-publisher.dto';
+import { PublisherDto } from './dto/publisher.dto';
 
 @Controller('publisher')
 export class PublisherController {
-  constructor(private readonly publisherService: PublisherService) {}
+  constructor(private readonly publisherService: PublisherService) { }
 
   @Post()
   create(@Body() createPublisherDto: CreatePublisherDto) {
@@ -13,7 +14,7 @@ export class PublisherController {
   }
 
   @Get()
-  findAll() {
+  findAll(): PublisherDto[] {
     return this.publisherService.findAll();
   }
 
