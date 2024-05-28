@@ -1,26 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { CreateReaderDto } from './dto/create-reader.dto';
 import { UpdateReaderDto } from './dto/update-reader.dto';
+import { READER_REPOSITORY } from 'src/shared/constants';
+import { Repository } from 'typeorm';
+import { Reader } from './entities/reader.entity';
+import { UUID } from 'crypto';
 
 @Injectable()
 export class ReaderService {
+  constructor(@Inject(READER_REPOSITORY) private readerRepository: Repository<Reader>, private Logger: Logger) { }
   create(createReaderDto: CreateReaderDto) {
-    return 'This action adds a new reader';
+    return this.readerRepository.save(createReaderDto);
   }
 
   findAll() {
-    return `This action returns all reader`;
+    return this.readerRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} reader`;
+  findOne(id: UUID) {
+    return this.readerRepository.findOneBy({ id });
   }
 
-  update(id: number, updateReaderDto: UpdateReaderDto) {
-    return `This action updates a #${id} reader`;
+  update(id: UUID, updateReaderDto: UpdateReaderDto) {
+    return this.readerRepository.update(id, updateReaderDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} reader`;
+  remove(id: UUID) {
+    return this.readerRepository.delete(id);
   }
 }

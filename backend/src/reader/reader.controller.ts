@@ -2,10 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ReaderService } from './reader.service';
 import { CreateReaderDto } from './dto/create-reader.dto';
 import { UpdateReaderDto } from './dto/update-reader.dto';
+import { UUID } from 'crypto';
 
 @Controller('reader')
 export class ReaderController {
-  constructor(private readonly readerService: ReaderService) {}
+  constructor(private readonly readerService: ReaderService) { }
 
   @Post()
   create(@Body() createReaderDto: CreateReaderDto) {
@@ -18,17 +19,17 @@ export class ReaderController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.readerService.findOne(+id);
+  findOne(@Param('id') id: UUID) {
+    return this.readerService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReaderDto: UpdateReaderDto) {
-    return this.readerService.update(+id, updateReaderDto);
+  update(@Param('id') id: UUID, @Body() updateReaderDto: UpdateReaderDto) {
+    return this.readerService.update(id, updateReaderDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.readerService.remove(+id);
+  remove(@Param('id') id: UUID) {
+    return this.readerService.remove(id);
   }
 }

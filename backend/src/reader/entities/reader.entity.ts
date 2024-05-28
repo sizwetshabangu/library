@@ -1,17 +1,33 @@
+import { UUID } from "crypto";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity()
 export class Reader {
-    constructor(
-        private id: string,
-        private firstName: string,
-        private lastName: string,
-        private email: string,
-        private phone: string,
-        private address: string,
-        private createdAt: Date,
-        private updatedAt: Date,
-        private deletedAt: Date,
-        private deleted: boolean,
-        private deletedBy: string,
-        private updatedBy: string,
-        private createdBy: string,
-    ) { }
+    @PrimaryGeneratedColumn('uuid')
+    id: UUID;
+    @Column()
+    firstName: string;
+    @Column()
+    lastName: string;
+    @Column()
+    email: string;
+    @Column()
+    phone: string;
+    @Column()
+    address: string;
+    @Column()
+    createdAt: Date;
+    @Column()
+    updatedAt: Date;
+    @Column()
+    deletedAt: Date;
+    @Column()
+    deleted: boolean;
+    @Column()
+    deletedBy: string;
+    @Column()
+    createdBy: string;
+    @Column()
+    updatedBy: string;
+    constructor() { }
 }
