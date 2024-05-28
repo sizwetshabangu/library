@@ -5,23 +5,23 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class Category {
     @PrimaryGeneratedColumn('uuid')
     id: UUID;
-    @Column()
+    @Column('varchar', { length: 100, nullable: false })
     name: string;
-    @Column()
+    @Column('varchar')
     description: string;
-    @Column()
+    @Column('datetime')
     createdAt: Date;
-    @Column()
+    @Column('datetime', { nullable: true })
     updatedAt: Date;
-    @Column()
+    @Column('datetime', { nullable: true })
     deletedAt: Date;
-    @Column()
+    @Column('boolean', { default: false, nullable: false })
     deleted: boolean;
-    @Column()
+    @Column('varchar', { nullable: true })
     deletedBy: string;
-    @Column()
+    @Column('varchar', { nullable: true })
     updatedBy: string;
-    @Column()
+    @Column('varchar', { nullable: false })
     createdBy: string;
     constructor() { }
 }

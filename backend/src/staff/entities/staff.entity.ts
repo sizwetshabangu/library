@@ -1,17 +1,33 @@
+import { UUID } from "crypto";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity()
 export class Staff {
-    constructor(
-        private id: string,
-        private firstName: string,
-        private lastName: string,
-        private email: string,
-        private phone: string,
-        private address: string,
-        private createdAt: Date,
-        private updatedAt: Date,
-        private deletedAt: Date,
-        private deleted: boolean,
-        private deletedBy: string,
-        private updatedBy: string,
-        private createdBy: string,
-    ) { }
+    @PrimaryGeneratedColumn('uuid')
+    id: UUID;
+    @Column('varchar')
+    firstName: string;
+    @Column('varchar')
+    lastName: string;
+    @Column('varchar')
+    email: string;
+    @Column('varchar')
+    phone: string;
+    @Column('varchar')
+    address: string;
+    @Column('datetime')
+    createdAt: Date;
+    @Column('datetime')
+    updatedAt: Date;
+    @Column('datetime')
+    deletedAt: Date;
+    @Column('boolean')
+    deleted: boolean;
+    @Column('uuid')
+    deletedBy: string;
+    @Column('uuid')
+    updatedBy: string;
+    @Column('uuid')
+    createdBy: string;
+    constructor() { }
 }
