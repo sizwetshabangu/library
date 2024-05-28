@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    password: U3Edk6SHxd0pbSS
+    username: backend-application
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/library
+  application:
+    name: spring-backend
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    open-in-view: off
+    show-sql: true
+server:
+  port: 8081
