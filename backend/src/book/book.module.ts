@@ -2,7 +2,7 @@ import { Logger, Module } from '@nestjs/common';
 import { BookService } from './book.service';
 import { BookController } from './book.controller';
 import { bookProvider } from './book.provider';
-import { DatabaseModule } from 'src/database/database.module';
+import { DatabaseModule } from 'src/provider/database/database.module';
 
 @Module({
   imports: [DatabaseModule,],
