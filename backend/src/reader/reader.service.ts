@@ -1,7 +1,7 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { CreateReaderDto } from './dto/create-reader.dto';
 import { UpdateReaderDto } from './dto/update-reader.dto';
-import { READER_REPOSITORY } from 'src/shared/constants';
+import { READER_REPOSITORY } from 'src/common/constants';
 import { Repository } from 'typeorm';
 import { Reader } from './entities/reader.entity';
 import { UUID } from 'crypto';

@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
 import { Book } from "./entities/book.entity";
-import { BOOK_REPOSITORY, DATA_SOURCE } from "src/shared/constants";
+import { BOOK_REPOSITORY, DATA_SOURCE } from "src/common/constants";
 
 export const bookProvider = [
     {

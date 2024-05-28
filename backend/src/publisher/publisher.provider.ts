@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { PUBLISHER_REPOSITORY, DATA_SOURCE } from 'src/shared/constants';
+import { PUBLISHER_REPOSITORY, DATA_SOURCE } from 'src/common/constants';
 import { Publisher } from './entities/publisher.entity';
 
 export const publisherRepository = [

@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { Address } from './entities/address.entity';
-import { ADDRESS_REPOSITORY, DATA_SOURCE } from 'src/shared/constants';
+import { ADDRESS_REPOSITORY, DATA_SOURCE } from 'src/common/constants';
 
 export const addressProvider = [
     {

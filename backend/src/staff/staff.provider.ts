@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { DATA_SOURCE, STAFF_REPOSITORY } from "src/shared/constants";
+import { DATA_SOURCE, STAFF_REPOSITORY } from "src/common/constants";
 import { Staff } from "./entities/staff.entity";
 
 export const staffProvider = [

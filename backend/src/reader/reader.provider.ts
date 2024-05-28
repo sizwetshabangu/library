@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { DATA_SOURCE, READER_REPOSITORY } from 'src/shared/constants';
+import { DATA_SOURCE, READER_REPOSITORY } from 'src/common/constants';
 import { Reader } from './entities/reader.entity';
 
 export const readerProvider = [

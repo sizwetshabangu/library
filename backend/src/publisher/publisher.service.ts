@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreatePublisherDto } from './dto/create-publisher.dto';
 import { UpdatePublisherDto } from './dto/update-publisher.dto';
 import { UUID } from 'crypto';
-import { PUBLISHER_REPOSITORY } from 'src/shared/constants';
+import { PUBLISHER_REPOSITORY } from 'src/common/constants';
 import { Repository } from 'typeorm';
 import { Publisher } from './entities/publisher.entity';
 

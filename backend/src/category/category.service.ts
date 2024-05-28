@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
-import { CATEGORY_REPOSITORY } from 'src/shared/constants';
+import { CATEGORY_REPOSITORY } from 'src/common/constants';
 import { Repository } from 'typeorm';
 import { Category } from './entities/category.entity';
 import { UUID } from 'crypto';

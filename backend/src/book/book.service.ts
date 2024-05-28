@@ -3,7 +3,7 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { DeleteResult, Repository, TypeORMError } from 'typeorm';
 import { Book } from './entities/book.entity';
-import { BOOK_REPOSITORY } from './../shared/constants';
+import { BOOK_REPOSITORY } from '../common/constants';
 import { UUID } from 'crypto';
 
 @Injectable()
