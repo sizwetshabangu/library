@@ -1,14 +1,27 @@
+import { UUID } from "crypto";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity()
 export class Category {
-    constructor(
-        private id: string,
-        private name: string,
-        private description: string,
-        private createdAt: Date,
-        private updatedAt: Date,
-        private deletedAt: Date,
-        private deleted: boolean,
-        private deletedBy: string,
-        private updatedBy: string,
-        private createdBy: string,
-    ) { }
+    @PrimaryGeneratedColumn('uuid')
+    id: UUID;
+    @Column()
+    name: string;
+    @Column()
+    description: string;
+    @Column()
+    createdAt: Date;
+    @Column()
+    updatedAt: Date;
+    @Column()
+    deletedAt: Date;
+    @Column()
+    deleted: boolean;
+    @Column()
+    deletedBy: string;
+    @Column()
+    updatedBy: string;
+    @Column()
+    createdBy: string;
+    constructor() { }
 }

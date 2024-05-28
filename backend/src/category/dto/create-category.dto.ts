@@ -1,1 +1,3 @@
-export class CreateCategoryDto {}
+import { CategoryDto } from "./category.dto";
+
+export type CreateCategoryDto = Omit<CategoryDto, 'id' | 'createdAt' | 'updatedAt'>
