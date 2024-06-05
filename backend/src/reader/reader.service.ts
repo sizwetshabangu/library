@@ -1,14 +1,14 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { CreateReaderDto } from './dto/create-reader.dto';
 import { UpdateReaderDto } from './dto/update-reader.dto';
-import { READER_REPOSITORY } from 'src/common/constants';
 import { Repository } from 'typeorm';
 import { Reader } from './entities/reader.entity';
 import { UUID } from 'crypto';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ReaderService {
-  constructor(@Inject(READER_REPOSITORY) private readerRepository: Repository<Reader>, private Logger: Logger) { }
+  constructor(@InjectRepository(Reader) private readerRepository: Repository<Reader>, private Logger: Logger) { }
   create(createReaderDto: CreateReaderDto) {
     return this.readerRepository.save(createReaderDto);
   }

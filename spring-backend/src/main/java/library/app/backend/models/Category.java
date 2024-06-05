@@ -1,51 +1,50 @@
 package library.app.backend.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.GeneratedColumn;
 
 import java.time.Instant;
 import java.util.UUID;
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "category")
 public class Category {
     @Id
-    @Column(name = "id", nullable = false, length = 36)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, length = 36)
     private UUID id;
 
-    @Column(name = "description", nullable = false)
+    @Column(nullable = false)
     private String description;
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(nullable = false)
     private Instant createdAt;
 
-    @Column(name = "updatedAt")
+    @Column()
     private Instant updatedAt;
 
-    @Column(name = "deletedAt")
+    @Column()
     private Instant deletedAt;
 
-    @ColumnDefault("0")
-    @Column(name = "deleted", nullable = false)
-    private Byte deleted;
+    @ColumnDefault("false")
+    @Column(nullable = false)
+    private Boolean deleted;
 
-    @Column(name = "deletedBy")
-    private String deletedBy;
+    @Column()
+    private UUID deletedBy;
 
-    @Column(name = "updatedBy")
-    private String updatedBy;
+    @Column()
+    private UUID updatedBy;
 
-    @Column(name = "createdBy", nullable = false)
-    private String createdBy;
+    @Column(nullable = false)
+    private UUID createdBy;
 
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String name;
 
 }

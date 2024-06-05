@@ -9,7 +9,7 @@ export class Category {
     name: string;
     @Column('varchar')
     description: string;
-    @Column('datetime')
+    @Column('datetime', { default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date;
     @Column('datetime', { nullable: true })
     updatedAt: Date;
@@ -17,11 +17,11 @@ export class Category {
     deletedAt: Date;
     @Column('boolean', { default: false, nullable: false })
     deleted: boolean;
-    @Column('varchar', { nullable: true })
+    @Column('uuid', { nullable: true })
     deletedBy: string;
-    @Column('varchar', { nullable: true })
+    @Column('uuid', { nullable: true })
     updatedBy: string;
-    @Column('varchar', { nullable: false })
+    @Column('uuid', { nullable: true })
     createdBy: string;
     constructor() { }
 }

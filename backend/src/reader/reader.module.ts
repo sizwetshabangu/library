@@ -1,12 +1,12 @@
 import { Logger, Module } from '@nestjs/common';
 import { ReaderService } from './reader.service';
 import { ReaderController } from './reader.controller';
-import { DatabaseModule } from 'src/provider/database/database.module';
-import { readerProvider } from './reader.provider';
+import { Reader } from './entities/reader.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [TypeOrmModule.forFeature([Reader])],
   controllers: [ReaderController],
-  providers: [...readerProvider, ReaderService, Logger],
+  providers: [ReaderService, Logger],
 })
 export class ReaderModule { }

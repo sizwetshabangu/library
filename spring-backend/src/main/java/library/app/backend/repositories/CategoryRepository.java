@@ -2,9 +2,10 @@ package library.app.backend.repositories;
 
 import library.app.backend.models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-public interface CategoryRepository extends JpaRepository<Category, UUID>, JpaSpecificationExecutor<Category> {
+@Repository
+public interface CategoryRepository extends JpaRepository<Category, UUID> {
 }

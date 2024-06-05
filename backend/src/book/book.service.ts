@@ -1,15 +1,18 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-import { DeleteResult, Repository, TypeORMError } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 import { Book } from './entities/book.entity';
-import { BOOK_REPOSITORY } from '../common/constants';
 import { UUID } from 'crypto';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class BookService {
-  constructor(@Inject(BOOK_REPOSITORY) private bookRepository: Repository<Book>, private Logger: Logger) { }
-  create(createBookDto: CreateBookDto) {
+  constructor(
+    @InjectRepository(Book) private bookRepository: Repository<Book>,
+    private Logger: Logger) { }
+
+  async create(createBookDto: CreateBookDto) {
     Logger.log('Creating book', 'BookService.create');
     return this.bookRepository.save(createBookDto);
   }
@@ -24,7 +27,7 @@ export class BookService {
     return await this.bookRepository.findOneBy({ id });
   }
 
-  update(id: UUID, updateBookDto: UpdateBookDto) {
+  async update(id: UUID, updateBookDto: UpdateBookDto) {
     Logger.log(`Updating book with id: ${id}`, 'BookService.update');
     return this.bookRepository.update(id, updateBookDto)
   }

@@ -1,12 +1,12 @@
 import { Logger, Module } from '@nestjs/common';
 import { PublisherService } from './publisher.service';
 import { PublisherController } from './publisher.controller';
-import { publisherRepository } from './publisher.provider';
-import { DatabaseModule } from 'src/provider/database/database.module';
+import { Publisher } from './entities/publisher.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [TypeOrmModule.forFeature([Publisher])],
   controllers: [PublisherController],
-  providers: [...publisherRepository, PublisherService, Logger],
+  providers: [PublisherService, Logger],
 })
 export class PublisherModule { }

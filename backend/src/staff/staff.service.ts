@@ -1,14 +1,15 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateStaffDto } from './dto/create-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
 import { Repository } from 'typeorm';
 import { Staff } from './entities/staff.entity';
 import { UUID } from 'crypto';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class StaffService {
   constructor(
-    @Inject('STAFF_REPOSITORY') private staffRepository: Repository<Staff>,
+    @InjectRepository(Staff) private staffRepository: Repository<Staff>,
     private Logger: Logger
   ) { };
 
