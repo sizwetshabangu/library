@@ -1,8 +1,6 @@
 package library.app.backend.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import library.app.backend.models.Category;
-
 import java.io.Serializable;
 import java.util.UUID;
 

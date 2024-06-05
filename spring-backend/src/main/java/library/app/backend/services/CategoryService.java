@@ -1,14 +1,14 @@
 package library.app.backend.services;
 
-import library.app.backend.dto.CategoryDto;
-import library.app.backend.models.Category;
-import library.app.backend.repositories.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import library.app.backend.dto.CategoryDto;
+import library.app.backend.models.Category;
+import library.app.backend.repositories.CategoryRepository;
 
 @Service
 public class CategoryService {
