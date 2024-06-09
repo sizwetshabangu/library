@@ -1,6 +1,5 @@
-package library.app.backend.repositories;
+package library.app.backend.book;
 
-import library.app.backend.models.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

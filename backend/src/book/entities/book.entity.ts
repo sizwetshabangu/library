@@ -1,5 +1,6 @@
 import { UUID } from "crypto";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Category } from "src/category/entities/category.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Book {
@@ -7,7 +8,7 @@ export class Book {
     id: UUID;
     @Column('varchar')
     isbn: string;
-    @Column()
+    @ManyToOne(type => Category, category => category.id)
     category: string;
     @Column()
     title: string;

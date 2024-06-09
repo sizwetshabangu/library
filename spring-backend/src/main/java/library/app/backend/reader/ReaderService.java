@@ -1,7 +1,5 @@
-package library.app.backend.services;
+package library.app.backend.reader;
 
-import library.app.backend.models.Reader;
-import library.app.backend.repositories.ReaderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

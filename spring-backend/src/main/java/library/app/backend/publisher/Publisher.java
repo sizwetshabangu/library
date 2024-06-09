@@ -1,4 +1,4 @@
-package library.app.backend.models;
+package library.app.backend.publisher;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,43 +12,31 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "staff")
-public class Staff {
+@Table(name = "publisher")
+public class Publisher {
     @Id
     @Column(name = "id", nullable = false, length = 36)
     private String id;
 
-    @Column(name = "firstName", nullable = false)
-    private String firstName;
-
-    @Column(name = "lastName", nullable = false)
-    private String lastName;
-
-    @Column(name = "email", nullable = false)
-    private String email;
-
-    @Column(name = "phone", nullable = false)
-    private String phone;
-
-    @Column(name = "address", nullable = false)
-    private String address;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "createdAt", nullable = false)
     private Instant createdAt;
 
-    @Column(name = "updatedAt", nullable = false)
+    @Column(name = "updatedAt")
     private Instant updatedAt;
 
-    @Column(name = "deletedAt", nullable = false)
+    @Column(name = "deletedAt")
     private Instant deletedAt;
 
     @Column(name = "deleted", nullable = false)
     private Byte deleted;
 
-    @Column(name = "deletedBy", nullable = false)
+    @Column(name = "deletedBy")
     private String deletedBy;
 
-    @Column(name = "updatedBy", nullable = false)
+    @Column(name = "updatedBy")
     private String updatedBy;
 
     @Column(name = "createdBy", nullable = false)

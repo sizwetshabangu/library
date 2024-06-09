@@ -1,10 +1,8 @@
 services:
-  mysql:
-    image: 'mysql:latest'
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:latest
     environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+    - SA_PASSWORD=Pass@word
+    - ACCEPT_EULA=Y
     ports:
-      - '3306'
+    - "5434:1433"

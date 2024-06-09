@@ -1,6 +1,5 @@
-package library.app.backend.repositories;
+package library.app.backend.address;
 
-import library.app.backend.models.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

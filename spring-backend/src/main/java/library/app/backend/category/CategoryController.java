@@ -1,8 +1,5 @@
-package library.app.backend.controllers;
+package library.app.backend.category;
 
-import library.app.backend.dto.CategoryDto;
-import library.app.backend.models.Category;
-import library.app.backend.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -32,18 +29,21 @@ public class CategoryController {
     }
 
     @GetMapping("{id}")
-    public HttpEntity<Category> getById(@PathVariable("id") UUID id) {
+    public HttpEntity<CategoryDto> getById(@PathVariable("id") UUID id) {
         try {
-            return new ResponseEntity<>(this.categoryService.findById(id), HttpStatus.OK);
+            var category = this.categoryService.findById(id);
+            return new ResponseEntity<>(category, HttpStatus.OK);
         }catch (NoSuchElementException exception){
-            return new ResponseEntity<>(null, HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (Exception exception){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @DeleteMapping()
-    public ResponseEntity<Category> delete(@RequestBody Category category) {
+    @DeleteMapping("{id}")
+    public ResponseEntity<Category> deleteById(@PathVariable("id") UUID id) {
         try {
-            this.categoryService.delete(category);
+            this.categoryService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         catch (Exception exception){
@@ -52,13 +52,18 @@ public class CategoryController {
     }
 
     @PostMapping()
-    public ResponseEntity<Category> add(@RequestBody Category category) {
+    public ResponseEntity<CategoryDto> add(@RequestBody Category category) {
         try {
+            if (category == null) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
             return new ResponseEntity<>(
                     this.categoryService.save(category),
                     HttpStatus.CREATED);
         }catch (Exception exception){
+            System.out.println(exception.getClass());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
         }
     }
 }

@@ -9,26 +9,29 @@ import { ReaderModule } from './reader/reader.module';
 import { StaffModule } from './staff/staff.module';
 import { ConfigModule } from '@nestjs/config';
 import databaseConfig from './config/database/database.config';
-import { from } from 'rxjs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'backend-application',
-      password: 'U3Edk6SHxd0pbSS',
-      database: 'library',
-      synchronize: true,
-      autoLoadEntities: true,
-    }),
     ConfigModule.forRoot({
-      load: [
-        databaseConfig,
-      ]
+      load: [databaseConfig],
+      envFilePath: ['development.local.env'],
+    }),
+    TypeOrmModule.forRoot({
+      type: process.env.MYSQL_DATABASE_TYPE as "mysql",
+      host: process.env.MYSQL_HOST,
+      port: parseInt(process.env.MYSQL_PORT ?? '3306'),
+      username: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: process.env.TYPEORM_SYNCHRONIZE === 'true',
+      connectTimeout: 30000,
+      retryAttempts: 3,
+      retryDelay: 3000,
+      keepConnectionAlive: true,
+      timezone: '+02:00',
     }),
     BookModule,
     PublisherModule,

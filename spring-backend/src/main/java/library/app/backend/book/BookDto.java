@@ -1,11 +1,11 @@
-package library.app.backend.dto;
+package library.app.backend.book;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 
 /**
- * DTO for {@link library.app.backend.models.Book}
+ * DTO for {@link Book}
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record BookDto(String id, String isbn, String category, String title, String author, String language,

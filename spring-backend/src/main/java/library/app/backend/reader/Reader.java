@@ -1,4 +1,4 @@
-package library.app.backend.models;
+package library.app.backend.reader;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
