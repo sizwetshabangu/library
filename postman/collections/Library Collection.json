@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "2bf7e189-a901-4e3d-a41a-c7902fcb9328",
+		"name": "Library Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "16881451-2bf7e189-a901-4e3d-a41a-c7902fcb9328"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "categories",
+					"id": "15a617f0-0265-45ee-9bb1-26d4e45dced7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/category",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category",
+					"id": "5680e286-e611-4ed7-9463-de2270b290e9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/category/f9c371fb-79a1-4f98-bda8-aad378216fcd",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"category",
+								"f9c371fb-79a1-4f98-bda8-aad378216fcd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category",
+					"id": "7ba04301-f595-4a6f-9b22-4b376f83cbdb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Horror\",\r\n    \"description\": \"Characterized by the fact that the main plot revolves around something scary and terrifying\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{library}}/category",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category",
+					"id": "e1033dff-6ba8-4df1-b46e-9f4cb3495f50",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Horrors\",\r\n    \"description\": \"Characterized by the fact that the main plot revolves around something scary and terrifying\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{library}}/category/2d69b5bf-3af3-494a-a40e-ec498ef70b90",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"category",
+								"2d69b5bf-3af3-494a-a40e-ec498ef70b90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category",
+					"id": "5ed0df1e-30b7-4422-981a-45aedb0397be",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/category/2d69b5bf-3af3-494a-a40e-ec498ef70b90",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"category",
+								"2d69b5bf-3af3-494a-a40e-ec498ef70b90"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "02d80c1d-fa06-42a1-a452-85e295029bec"
+		}
+	]
+}
