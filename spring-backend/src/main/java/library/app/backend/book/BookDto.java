@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import library.app.backend.category.Category;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -13,7 +14,7 @@ import java.util.UUID;
 public record BookDto(
         UUID id,
         String isbn,
-        Category category,
+        List<Category> category,
         String title,
         String author,
         String language,

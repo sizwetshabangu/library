@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -22,8 +23,8 @@ public class Book {
     @Column(nullable = false)
     private String isbn;
 
-    @ManyToOne()
-    private Category category;
+    @OneToMany()
+    private List<Category> category;
 
     @Column(nullable = false)
     private String title;
