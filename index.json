@@ -1,0 +1,3157 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/addresses": {
+            "get": {
+                "tags": [
+                    "address-entity-controller"
+                ],
+                "description": "get-address",
+                "operationId": "getCollectionResource-address-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelAddress"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelAddress"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "address-entity-controller"
+                ],
+                "description": "create-address",
+                "operationId": "postCollectionResource-address-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelAddress"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/addresses/{id}": {
+            "get": {
+                "tags": [
+                    "address-entity-controller"
+                ],
+                "description": "get-address",
+                "operationId": "getItemResource-address-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelAddress"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "address-entity-controller"
+                ],
+                "description": "update-address",
+                "operationId": "putItemResource-address-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelAddress"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelAddress"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "address-entity-controller"
+                ],
+                "description": "delete-address",
+                "operationId": "deleteItemResource-address-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "address-entity-controller"
+                ],
+                "description": "patch-address",
+                "operationId": "patchItemResource-address-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelAddress"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/books": {
+            "get": {
+                "tags": [
+                    "book-entity-controller"
+                ],
+                "description": "get-book",
+                "operationId": "getCollectionResource-book-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelBook"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelBook"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "book-entity-controller"
+                ],
+                "description": "create-book",
+                "operationId": "postCollectionResource-book-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelBook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/books/{id}": {
+            "get": {
+                "tags": [
+                    "book-entity-controller"
+                ],
+                "description": "get-book",
+                "operationId": "getItemResource-book-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelBook"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "book-entity-controller"
+                ],
+                "description": "update-book",
+                "operationId": "putItemResource-book-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelBook"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelBook"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "book-entity-controller"
+                ],
+                "description": "delete-book",
+                "operationId": "deleteItemResource-book-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "book-entity-controller"
+                ],
+                "description": "patch-book",
+                "operationId": "patchItemResource-book-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelBook"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/books/{id}/category": {
+            "get": {
+                "tags": [
+                    "book-property-reference-controller"
+                ],
+                "description": "get-category-by-book-Id",
+                "operationId": "followPropertyReference-book-get_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "book-property-reference-controller"
+                ],
+                "description": "update-category-by-book-Id",
+                "operationId": "createPropertyReference-book-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "book-property-reference-controller"
+                ],
+                "description": "delete-category-by-book-Id",
+                "operationId": "deletePropertyReference-book-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "book-property-reference-controller"
+                ],
+                "description": "patch-category-by-book-Id",
+                "operationId": "createPropertyReference-book-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/books/{id}/category/{propertyId}": {
+            "get": {
+                "tags": [
+                    "book-property-reference-controller"
+                ],
+                "description": "get-category-by-book-Id",
+                "operationId": "followPropertyReference-book-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "book-property-reference-controller"
+                ],
+                "description": "delete-category-by-book-Id",
+                "operationId": "deletePropertyReferenceId-book-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "category-entity-controller"
+                ],
+                "description": "get-category",
+                "operationId": "getCollectionResource-category-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelCategory"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelCategory"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "category-entity-controller"
+                ],
+                "description": "create-category",
+                "operationId": "postCollectionResource-category-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "get": {
+                "tags": [
+                    "category-entity-controller"
+                ],
+                "description": "get-category",
+                "operationId": "getItemResource-category-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "category-entity-controller"
+                ],
+                "description": "update-category",
+                "operationId": "putItemResource-category-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "category-entity-controller"
+                ],
+                "description": "delete-category",
+                "operationId": "deleteItemResource-category-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "category-entity-controller"
+                ],
+                "description": "patch-category",
+                "operationId": "patchItemResource-category-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/profile": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "listAllFormsOfMetadata_1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RepresentationModelObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/addresses": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/books": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_2",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/categories": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_3",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/publishers": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_4",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/readers": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_5",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/staffs": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/publishers": {
+            "get": {
+                "tags": [
+                    "publisher-entity-controller"
+                ],
+                "description": "get-publisher",
+                "operationId": "getCollectionResource-publisher-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelPublisher"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelPublisher"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "publisher-entity-controller"
+                ],
+                "description": "create-publisher",
+                "operationId": "postCollectionResource-publisher-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PublisherRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelPublisher"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/publishers/{id}": {
+            "get": {
+                "tags": [
+                    "publisher-entity-controller"
+                ],
+                "description": "get-publisher",
+                "operationId": "getItemResource-publisher-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelPublisher"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "publisher-entity-controller"
+                ],
+                "description": "update-publisher",
+                "operationId": "putItemResource-publisher-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PublisherRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelPublisher"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelPublisher"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "publisher-entity-controller"
+                ],
+                "description": "delete-publisher",
+                "operationId": "deleteItemResource-publisher-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "publisher-entity-controller"
+                ],
+                "description": "patch-publisher",
+                "operationId": "patchItemResource-publisher-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PublisherRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelPublisher"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/readers": {
+            "get": {
+                "tags": [
+                    "reader-entity-controller"
+                ],
+                "description": "get-reader",
+                "operationId": "getCollectionResource-reader-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelReader"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelReader"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "reader-entity-controller"
+                ],
+                "description": "create-reader",
+                "operationId": "postCollectionResource-reader-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReaderRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelReader"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/readers/{id}": {
+            "get": {
+                "tags": [
+                    "reader-entity-controller"
+                ],
+                "description": "get-reader",
+                "operationId": "getItemResource-reader-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelReader"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "reader-entity-controller"
+                ],
+                "description": "update-reader",
+                "operationId": "putItemResource-reader-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReaderRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelReader"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelReader"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "reader-entity-controller"
+                ],
+                "description": "delete-reader",
+                "operationId": "deleteItemResource-reader-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "reader-entity-controller"
+                ],
+                "description": "patch-reader",
+                "operationId": "patchItemResource-reader-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReaderRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelReader"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/staffs": {
+            "get": {
+                "tags": [
+                    "staff-entity-controller"
+                ],
+                "description": "get-staff",
+                "operationId": "getCollectionResource-staff-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelStaff"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelStaff"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "staff-entity-controller"
+                ],
+                "description": "create-staff",
+                "operationId": "postCollectionResource-staff-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StaffRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelStaff"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/staffs/{id}": {
+            "get": {
+                "tags": [
+                    "staff-entity-controller"
+                ],
+                "description": "get-staff",
+                "operationId": "getItemResource-staff-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelStaff"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "staff-entity-controller"
+                ],
+                "description": "update-staff",
+                "operationId": "putItemResource-staff-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StaffRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelStaff"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelStaff"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "staff-entity-controller"
+                ],
+                "description": "delete-staff",
+                "operationId": "deleteItemResource-staff-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "staff-entity-controller"
+                ],
+                "description": "patch-staff",
+                "operationId": "patchItemResource-staff-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StaffRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelStaff"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/book": {
+            "get": {
+                "tags": [
+                    "book-controller"
+                ],
+                "operationId": "get",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Book"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "book-controller"
+                ],
+                "operationId": "put",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "book-controller"
+                ],
+                "operationId": "post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Book"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/category": {
+            "get": {
+                "tags": [
+                    "category-controller"
+                ],
+                "operationId": "getAll",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CategoryDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "category-controller"
+                ],
+                "operationId": "add",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Category"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/category/{id}": {
+            "get": {
+                "tags": [
+                    "category-controller"
+                ],
+                "operationId": "getById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "category-controller"
+                ],
+                "operationId": "deleteById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/book/{id}": {
+            "get": {
+                "tags": [
+                    "book-controller"
+                ],
+                "operationId": "getById_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "book-controller"
+                ],
+                "operationId": "deleteById_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AbstractJsonSchemaPropertyObject": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "readOnly": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Item": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+                        }
+                    },
+                    "requiredProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "JsonSchema": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+                        }
+                    },
+                    "requiredProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "definitions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Item"
+                        }
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "$schema": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Links": {
+                "type": "object",
+                "additionalProperties": {
+                    "$ref": "#/components/schemas/Link"
+                }
+            },
+            "RepresentationModelObject": {
+                "type": "object",
+                "properties": {
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "EntityModelStaff": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string"
+                    },
+                    "updatedBy": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PageMetadata": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "PagedModelEntityModelStaff": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "staffs": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelStaff"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "EntityModelAddress": {
+                "type": "object",
+                "properties": {
+                    "houseNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelAddress": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "addresses": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelAddress"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "Category": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "boolean"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                }
+            },
+            "EntityModelCategory": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "boolean"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelCategory": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "categories": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelCategory"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "EntityModelPublisher": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string"
+                    },
+                    "updatedBy": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelPublisher": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "publishers": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelPublisher"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "EntityModelReader": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "updatedBy": {
+                        "type": "string"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelReader": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "readers": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelReader"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "Book": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "isbn": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    },
+                    "publicationYear": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "publisher": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "isAvailable": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                }
+            },
+            "EntityModelBook": {
+                "type": "object",
+                "properties": {
+                    "isbn": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    },
+                    "publicationYear": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "publisher": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "isAvailable": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelBook": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "books": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelBook"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "CollectionModelObject": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "objects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "AddressRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "houseNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "BookRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "isbn": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    },
+                    "publicationYear": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "publisher": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "isAvailable": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                }
+            },
+            "CategoryRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "boolean"
+                    },
+                    "deletedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                }
+            },
+            "PublisherRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string"
+                    },
+                    "updatedBy": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ReaderRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "updatedBy": {
+                        "type": "string"
+                    }
+                }
+            },
+            "StaffRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "deletedBy": {
+                        "type": "string"
+                    },
+                    "updatedBy": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CategoryDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Link": {
+                "type": "object",
+                "properties": {
+                    "href": {
+                        "type": "string"
+                    },
+                    "hreflang": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "deprecation": {
+                        "type": "string"
+                    },
+                    "profile": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "templated": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}
