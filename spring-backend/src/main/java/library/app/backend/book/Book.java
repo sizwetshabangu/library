@@ -1,13 +1,14 @@
 package library.app.backend.book;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import library.app.backend.category.Category;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,55 +16,55 @@ import java.time.Instant;
 @Table(name = "book")
 public class Book {
     @Id
-    @Column(name = "id", nullable = false, length = 36)
-    private String id;
+    @Column(nullable = false)
+    private UUID id;
 
-    @Column(name = "isbn", nullable = false)
+    @Column(nullable = false)
     private String isbn;
 
-    @Column(name = "category", nullable = false)
-    private String category;
+    @ManyToOne()
+    private Category category;
 
-    @Column(name = "title", nullable = false)
+    @Column(nullable = false)
     private String title;
 
-    @Column(name = "author", nullable = false)
+    @Column(nullable = false)
     private String author;
 
-    @Column(name = "language", nullable = false)
+    @Column(nullable = false)
     private String language;
 
-    @Column(name = "publicationYear", nullable = false)
+    @Column(nullable = false)
     private Integer publicationYear;
 
-    @Column(name = "publisher", nullable = false)
+    @Column(nullable = false)
     private String publisher;
 
-    @Column(name = "image", nullable = false)
+    @Column(nullable = false)
     private String image;
 
-    @Column(name = "isAvailable", nullable = false)
+    @Column(nullable = false)
     private Byte isAvailable;
 
-    @Column(name = "createdAt", nullable = false)
+    @CreatedDate
     private Instant createdAt;
 
-    @Column(name = "updatedAt", nullable = false)
+    @LastModifiedDate
     private Instant updatedAt;
 
-    @Column(name = "deletedAt", nullable = false)
+    @Column()
     private Instant deletedAt;
 
     @Column(name = "deleted", nullable = false)
     private Byte deleted;
 
-    @Column(name = "deletedBy", nullable = false)
-    private String deletedBy;
+    @Column()
+    private UUID deletedBy;
 
-    @Column(name = "updatedBy", nullable = false)
-    private String updatedBy;
+    @Column()
+    private UUID updatedBy;
 
-    @Column(name = "createdBy", nullable = false)
-    private String createdBy;
+    @Column()
+    private UUID createdBy;
 
 }

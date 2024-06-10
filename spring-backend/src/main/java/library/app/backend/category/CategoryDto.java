@@ -9,9 +9,13 @@ import java.util.UUID;
  * DTO for {@link Category}
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record CategoryDto(UUID id, String name, String description) implements Serializable {
+public record CategoryDto(
+        UUID id,
+        String name,
+        String description
+) implements Serializable {
 
-public static CategoryDto toCategoryDto(Category category){
-    return new CategoryDto(category.getId(), category.getName(), category.getDescription());
-}
+    public static CategoryDto toCategoryDto(Category category) {
+        return new CategoryDto(category.getId(), category.getName(), category.getDescription());
+    }
 }

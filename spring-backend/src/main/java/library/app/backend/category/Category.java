@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -25,7 +26,7 @@ public class Category {
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
+    @CreatedDate
     private Instant createdAt;
 
     @Column()

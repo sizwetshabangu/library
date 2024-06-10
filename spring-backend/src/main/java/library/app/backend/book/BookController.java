@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RestController()
 @RequestMapping("book")
@@ -15,13 +16,13 @@ public class BookController {
         return new ArrayList<Book>();
     }
 
-    @GetMapping()
-    public Book getById() {
+    @GetMapping("/{id}")
+    public Book getById(@PathVariable UUID id) {
         return new Book();
     }
 
     @PostMapping()
-    public Book post() {
+    public Book post(@RequestBody Book book) {
         return new Book();
     }
 
@@ -30,8 +31,8 @@ public class BookController {
         return new Book();
     }
 
-    @DeleteMapping()
-    public Book deleteById() {
+    @DeleteMapping("/{id}")
+    public Book deleteById(@PathVariable UUID id) {
         return new Book();
     }
 }
