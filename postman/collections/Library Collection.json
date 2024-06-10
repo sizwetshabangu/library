@@ -17,7 +17,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/hal+json",
+								"disabled": true
+							}
+						],
 						"url": {
 							"raw": "{{library}}/category",
 							"host": [
@@ -40,13 +46,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{library}}/category/f9c371fb-79a1-4f98-bda8-aad378216fcd",
+							"raw": "{{library}}/category/2d69b5bf-3af3-494a-a40e-ec498ef70b90",
 							"host": [
 								"{{library}}"
 							],
 							"path": [
 								"category",
-								"f9c371fb-79a1-4f98-bda8-aad378216fcd"
+								"2d69b5bf-3af3-494a-a40e-ec498ef70b90"
 							]
 						}
 					},
@@ -137,6 +143,119 @@
 				}
 			],
 			"id": "02d80c1d-fa06-42a1-a452-85e295029bec"
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "book",
+					"id": "1bad60e0-f0c4-4b9f-9ac7-600b9d1c248e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/book",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book",
+					"id": "714db448-91a7-41a4-af7c-ead45f323f3b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/book/0036295a-9d33-4574-aad3-3c52a2bca43b",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"book",
+								"0036295a-9d33-4574-aad3-3c52a2bca43b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book",
+					"id": "5f0f04c0-bdab-4be4-8aa9-74789fd2e46c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/book",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book Copy 2",
+					"id": "cb751d29-8f9e-4044-a1de-52e30282df90",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/book",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book Copy 3",
+					"id": "a236b212-4116-4821-985e-e9f5a05d95c7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{library}}/book/0036295a-9d33-4574-aad3-3c52a2bca43b",
+							"host": [
+								"{{library}}"
+							],
+							"path": [
+								"book",
+								"0036295a-9d33-4574-aad3-3c52a2bca43b"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "72d1a5b2-63a0-4c37-9d86-8599b5dd86de"
 		}
 	]
 }
