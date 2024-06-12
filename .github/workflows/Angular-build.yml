@@ -5,27 +5,27 @@ name: Angular CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
       - ng-frontend/**
   pull_request:
-    branches: [ "main" ]
-    
+    branches: ["main"]
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js 22.3.0
-      uses: actions/setup-node@v3
-      with:
-        node-version: 22.3.0
-        cache: 'npm'
-    - run: npm ci
-      working-directory: './ng-frontend'
-    - run: npm run build --if-present
-      working-directory: './ng-frontend'
-    - run: npm test
-      working-directory: './ng-frontend'
+      - uses: actions/checkout@v4
+      - name: Use Node.js 22.3.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.3.0
+          cache: "npm"
+          cache-dependency-path: ./ng-frontend/package-lock.json
+      - run: npm ci
+        working-directory: "./ng-frontend"
+      - run: npm run build --if-present
+        working-directory: "./ng-frontend"
+      - run: npm test
+        working-directory: "./ng-frontend"
