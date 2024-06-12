@@ -21,6 +21,6 @@ class CategoryControllerTest {
     }
 
     @Test
-    void add() {
+    void post() {
     }
 }

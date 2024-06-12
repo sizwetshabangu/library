@@ -2,10 +2,9 @@ package library.app.backend.category;
 
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
+import java.lang.reflect.Array;
+import java.time.Instant;
+import java.util.*;
 
 @Service
 public class CategoryService {
@@ -16,33 +15,31 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<CategoryDto> findAll() {
+    public List<CategoryDto> find() {
         return this.categoryRepository.findAll()
                 .stream()
                 .map(CategoryDto::toCategoryDto)
                 .toList();
+
     }
 
-    public void deleteById(UUID id) {
-        this.categoryRepository.deleteById(id);
+    public Category find(UUID id) throws NoSuchElementException {
+        return this.categoryRepository.findById(id).orElseThrow();
+        //return CategoryDto.toCategoryDto(response);
     }
 
-    public CategoryDto save(Category category) {
+    public CategoryDto create(Category category) {
         category.setId(UUID.randomUUID());
-        category.setCreatedAt(new Date().toInstant());
+        category.setCreatedAt(Instant.now());
         category.setDeleted(false);
         return CategoryDto.toCategoryDto(this.categoryRepository.save(category));
     }
 
-    public CategoryDto findById(UUID id) throws NoSuchElementException {
-        var response = this.categoryRepository.findById(id).orElseThrow();
-        return CategoryDto.toCategoryDto(response);
-    }
-
     public CategoryDto update(Category category) {
-        var categoryResponse = this.categoryRepository.save(category);
-        return new CategoryDto(categoryResponse.getId(), category.getName(), category.getDescription());
+        return CategoryDto.toCategoryDto(this.categoryRepository.save(category));
     }
 
-
+    public void delete(UUID id) {
+        this.categoryRepository.deleteById(id);
+    }
 }
