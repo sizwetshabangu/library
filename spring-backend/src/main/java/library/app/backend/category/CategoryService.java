@@ -29,9 +29,11 @@ public class CategoryService {
     }
 
     public CategoryDto create(Category category) {
-        category.setId(UUID.randomUUID());
-        category.setCreatedAt(Instant.now());
-        category.setDeleted(false);
+        if(!Objects.isNull(category)) {
+            category.setId(UUID.randomUUID());
+            category.setCreatedAt(Instant.now());
+            category.setDeleted(false);
+        }
         return CategoryDto.toCategoryDto(this.categoryRepository.save(category));
     }
 
