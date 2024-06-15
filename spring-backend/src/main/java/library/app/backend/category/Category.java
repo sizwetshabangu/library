@@ -1,5 +1,6 @@
 package library.app.backend.category;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,6 +14,7 @@ import org.springframework.hateoas.RepresentationModel;
 import java.time.Instant;
 import java.util.UUID;
 
+@JsonIgnoreProperties({"createdAt", "deletedAt", "deleted", "deletedBy", "createdBy", "updatedBy", "updatedAt"})
 @Getter
 @Setter
 @Entity

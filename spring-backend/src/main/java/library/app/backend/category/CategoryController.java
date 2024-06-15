@@ -1,17 +1,16 @@
 package library.app.backend.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -20,6 +19,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @RequestMapping("category")
 public class CategoryController {
     private final CategoryService categoryService;
+    private final HalModelBuilder halModelBuilder = HalModelBuilder.halModel();
+
+
     @Autowired
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
@@ -27,30 +29,25 @@ public class CategoryController {
 
     @GetMapping()
     public ResponseEntity<List<CategoryDto>> get() {
-        try{
+        try {
             return new ResponseEntity<>(this.categoryService.find(), HttpStatus.OK);
-        }catch (Exception exception){
+        } catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("{id}")
-    public EntityModel<Category> get(@PathVariable("id") UUID id) {
-            var category = this.categoryService.find(id);
-
-            if (category == null) {
-                throw new NoSuchElementException("Category not found");
-            }else {
-                var link = linkTo(CategoryController.class).slash(category.getId()).withSelfRel();
-                //CollectionModel<Category> categoryCollectionModel = Collections.singletonList(category);
-                return EntityModel.of(category, link);
-            }
-
-        /*catch (NoSuchElementException exception){
+    public ResponseEntity<RepresentationModel<Category>> get(@PathVariable("id") UUID id) {
+        try {
+            Category category = this.categoryService.find(id);
+            var link = linkTo(CategoryController.class).slash(category.getId()).withSelfRel();
+            RepresentationModel<Category> rep = this.halModelBuilder.embed(category).link(link).build();
+            return ResponseEntity.of(Optional.of(rep));
+        } catch (NoSuchElementException exception) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }catch (Exception exception){
+        } catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }*/
+        }
     }
 
     @DeleteMapping("{id}")
@@ -58,8 +55,7 @@ public class CategoryController {
         try {
             this.categoryService.delete(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        catch (Exception exception){
+        } catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -73,7 +69,7 @@ public class CategoryController {
             return new ResponseEntity<>(
                     this.categoryService.create(category),
                     HttpStatus.CREATED);
-        }catch (Exception exception){
+        } catch (Exception exception) {
             System.out.println(exception.getClass());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -84,7 +80,7 @@ public class CategoryController {
     public ResponseEntity<CategoryDto> put(@RequestBody Category category) {
         try {
             return new ResponseEntity<>(this.categoryService.update(category), HttpStatus.OK);
-        }catch (Exception exception){
+        } catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

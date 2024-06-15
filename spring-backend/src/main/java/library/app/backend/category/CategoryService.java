@@ -29,7 +29,6 @@ public class CategoryService {
 
     public Category find(UUID id) throws NoSuchElementException {
         return this.categoryRepository.findById(id).orElseThrow();
-        //return CategoryDto.toCategoryDto(response);
     }
 
     public CategoryDto create(Category category) {
