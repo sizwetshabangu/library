@@ -1,8 +1,10 @@
 package library.app.backend.book;
 
+import library.app.backend.category.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -24,6 +26,9 @@ public class BookService {
     }
 
     public Book create(Book book){
+        book.setCreatedAt(Instant.now());
+        book.setId(UUID.randomUUID());
+        book.setCategory(List.of(new Category()));
         return this.bookRepository.save(book);
     }
 

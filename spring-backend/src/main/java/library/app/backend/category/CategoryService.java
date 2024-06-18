@@ -19,12 +19,8 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<CategoryDto> find() {
-        return this.categoryRepository.findAll()
-                .stream()
-                .map(CategoryDto::toCategoryDto)
-                .toList();
-
+    public List<Category> find() {
+        return this.categoryRepository.findAll();
     }
 
     public Category find(UUID id) throws NoSuchElementException {

@@ -1,7 +1,7 @@
 package library.app.backend.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.HttpStatus;
@@ -28,9 +28,13 @@ public class CategoryController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<CategoryDto>> get() {
+    public ResponseEntity<CollectionModel<Category>> get() {
         try {
-            return new ResponseEntity<>(this.categoryService.find(), HttpStatus.OK);
+            List<Category> categories = this.categoryService.find();
+            CollectionModel<Category> collectionModel = CollectionModel.of(categories);
+            var selfRel = linkTo(CategoryController.class).slash(categories).withSelfRel();
+            collectionModel.add(selfRel);
+            return new ResponseEntity<>(collectionModel, HttpStatus.OK);
         } catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
